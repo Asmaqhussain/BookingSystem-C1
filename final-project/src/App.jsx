@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -6,18 +8,35 @@ import Benefits from "./components/Benefits";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 
+import FormPage from "./pages/FormPage";
+
 export default function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Header />
+
       <main>
-        <Hero />
-        <About />
-        <Catalog />
-        <Benefits />
-        <CTA />
+        <Routes>
+          {/* Home Page */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <About />
+                <Catalog />
+                <Benefits />
+                <CTA />
+              </>
+            }
+          />
+
+          {/* New Form Page */}
+          <Route path="/form" element={<FormPage />} />
+        </Routes>
       </main>
+
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
